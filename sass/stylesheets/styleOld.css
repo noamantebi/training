@@ -1,0 +1,87 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+html, body {
+  height: 100%; }
+
+body {
+  position: relative; }
+
+.date {
+  color: grey; }
+
+#main-head {
+  color: blue; }
+
+.header {
+  padding-left: 50px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  float: left; }
+
+#sub-head {
+  float: right;
+  padding-right: 50px; }
+
+#main-div {
+  border: 3px solid black;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%); }
+
+#table-container {
+  padding: 40px;
+  background: #E8E8E8;
+  height: 300px;
+  clear: both; }
+  #table-container > .table-row {
+    clear: both;
+    overflow: hidden; }
+    #table-container > .table-row:nth-child(odd) {
+      background: white; }
+    #table-container > .table-row .table-data {
+      padding: 10px 25px;
+      width: 12.5%;
+      float: left; }
+      #table-container > .table-row .table-data.status {
+        width: 37.5%; }
+      #table-container > .table-row .table-data.title {
+        font-weight: bold; }
+      #table-container > .table-row .table-data.running {
+        color: green; }
+      #table-container > .table-row .table-data.stopped {
+        color: orange; }
+      #table-container > .table-row .table-data.error {
+        color: red; }
+      #table-container > .table-row .table-data > .changeStatus {
+        background: #E8E8E8;
+        border: 2px solid black;
+        border-radius: 5px;
+        width: 70px;
+        height: 30px;
+        outline: none; }
+      #table-container > .table-row .table-data > .infoLink {
+        color: cornflowerblue; }
+
+/*# sourceMappingURL=styleOld.css.map */

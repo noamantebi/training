@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Zoti exercise</title>
+	<link rel="stylesheet" type="text/css" href="sass/stylesheets/style.css">
+    <
+</head>
+<body onload="load();">
+	<div id ="main-div">
+		<h1 id="main-head" class ="header">Application</h1>
+		<h3 id="sub-head" class="header"> Showing 4 Ravello applications </h3>
+		<div id="table-container">
+			<div class="table-row title">
+				<div class="table-data"> Name</div>
+				<div class="table-data status">Status</div>
+				<div class ="table-data"></div>
+				<div class="table-data">Owner</div>
+				<div class="table-data">Created</div>
+			</div>
+			<div class="table-row">
+				<div class="table-data">Tomi-the-king</div>
+				<div class="table-data status running">Running</div>
+				<div class ="table-data">
+                    <button type="button" class="changeStatus" onclick="buttonStatusClick(event)">Stop</button>
+                </div>
+				<div class="table-data ">yaniv</div>
+				<div class="table-data date">4/16/15</div>
+			</div>
+			<div class="table-row">
+				<div class="table-data">Ben-ben</div>
+				<div class="table-data status stopped">Stopped</div>
+				<div class ="table-data">
+                    <button type="button" class="changeStatus" onclick="buttonStatusClick(event)">Start</button>
+                </div>
+				<div class="table-data ">ben</div>
+				<div class="table-data date">3/12/15</div>
+				
+			</div>
+			<div class="table-row">
+				<div class="table-data">the-wolf</div>
+				<div class="table-data status error">Error</div>
+				<div class ="table-data">
+                    <button type="button" class="changeStatus" onclick="buttonStatusClick(event)">Start</button>
+                </div>
+				<div class="table-data ">daniel</div>
+				<div class="table-data date">2/12/15</div>
+				
+			</div>
+			<div class="table-row">
+				<div class="table-data">iftachaviv</div>
+				<div class="table-data status running">Running</div>
+				<div class ="table-data">
+                    <button type="button" class="changeStatus" onclick="buttonStatusClick(event)">Stop</button>
+                </div>
+				<div class="table-data ">iftachAviv</div>
+				<div class="table-data date">1/21/15</div>
+				
+			</div>
+		</div>
+	</div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src = "code.js"></script>
+    <script src = "jquery.js"></script>
+</body>
+</html>
