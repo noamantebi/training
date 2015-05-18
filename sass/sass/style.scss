@@ -27,7 +27,8 @@ $dateColor: grey;
 $running: green;
 $stopped: orange;
 $error: red;
-$changeStatusButton: #E8E8E8;
+$buttonColor: #E8E8E8;
+$draft: grey;
 
 html, body {
 	height: 100%;
@@ -52,6 +53,21 @@ body{
   	float: left;
 
 }
+.button{
+  font-size: smaller;
+  background: $buttonColor;
+  border: 2px solid black;
+  border-radius: 5px;
+  outline: none;
+}
+
+#refresh{
+  float: left;
+  padding: 6px;
+  margin-left: 50px;
+  margin-top: 35px;
+  width: 100px;
+}
 
 #sub-head{
 	float: right;
@@ -62,52 +78,51 @@ body{
 	border: 3px solid black;
 	position: absolute;
 	width: 100%;
-	top: 50%;
-	transform: translateY(-50%);
+	//top: 50%;
+	//transform: translateY(-50%);
 }
 #table-container{
 	padding: 40px;
 	background: #E8E8E8;
-	height: 300px;
+	//height: 300px;
 	clear: both;
+    &>.title {
+      .table-data{
+        font-weight: bold;
+      }
+    }
 	&>.table-row {
 		clear: both;
 		overflow: hidden;
 		&:nth-child(odd){
 			background: white;
-
 		}
 		.table-data{
-			padding: 10px 25px;
-			width:12.5%;
-			float:left;
-			&.status{
-				width: 40%;
-			}
-			&.title{
-				font-weight: bold;
-			}
-
-			&.running{
-				color: $running;
-			}
-			&.stopped{
-				color: $stopped;
-			}
-			&.error{
-				color: $error;
-			}
-		  	&>.changeStatus{
-			  background: $changeStatusButton;
-			  border: 2px solid black;
-              border-radius: 5px;
-              width: 70px;
-              height: 30px;
-              outline: none;
-			}
-          &>.infoLink{
+          padding: 10px 25px;
+          width: 12.5%;
+          float: left;
+          &.status {
+            width: 27.5%;
+          }
+          &.running {
+            color: $running;
+          }
+          &.stopped {
+            color: $stopped;
+          }
+          &.error {
+            color: $error;
+          }
+          &.draft {
+            color: $draft;
+          }
+          & > .tableDataButtons {
+            width: 70px;
+            height: 30px;
+          }
+          & > .infoLink {
             color: cornflowerblue;
           }
-		}
+        }
 	}
 }
