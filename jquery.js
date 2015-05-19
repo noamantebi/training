@@ -134,6 +134,9 @@ function rename(e){
     var id = e.target.getAttribute('appID');
     $.ajax({
         url: '/services/applications/'+id,
+        headers: {
+            'Accept': 'application/json'
+        },
         type: 'GET',
         dataType: 'json',
         username: 'ravello@ravello.com',
@@ -145,12 +148,15 @@ function rename(e){
                 var appData = data;
                 appData.name = newName;
                 $.ajax({
+                    headers: {
+                         'Accept': 'application/json'
+                    },
                     url: '/services/applications/'+id,
                     type: 'PUT',
-                    dataType: 'json',
+                    contentType: 'application/json',
                     username: 'ravello@ravello.com',
                     password: 'ravello',
-                    data: appData,
+                    data: JSON.stringify(appData),
                     success: function (data) {
                         alert("Action succeeded - press Refresh to see the changes");
                     }
