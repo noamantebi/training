@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Zoti exercise</title>
+	<title>Zoti exercise- using Angular</title>
 	<link rel="stylesheet" type="text/css" href="sass/stylesheets/style.css">
 </head>
-<body>
-	<div id="main-div">
-		<h1 id="main-head" class ="header">Applications</h1>
-		<h3 id="sub-head" class="header"> Showing 4 Ravello applications </h3>
-		<button id='refresh' type="button" class="button" onclick="refresh()">Refresh</button>
-		<div id="table-container">
+<body ng-app="mainApp">
+	<div class="main-div" ng-controller="MainController">
+        <div class="header-row">
+		    <h1 class="headers-left main-head header-data">Applications</h1>
+		    <h3 class="headers-right header-data"> Showing 4 Ravello applications </h3>
+            <div class="headers-right header-data filter-div">
+                <input type="text" name="filter" class="filter" placeholder="Filter by name">
+            </div>
+            <div class="headers-right header-data">
+                <button type="button" class="clear-filter button" onclick="clearFilter()">Clear</button>
+            </div>
+        </div>
+		<div class="table-container">
 			<div class="table-row title">
 				<div class="table-data">Name</div>
 				<div class="table-data status">Status</div>
-				<div class ="table-data"></div>
-				<div class ="table-data"></div>
+                <div class ="table-data"></div>
 				<div class="table-data">Owner</div>
 				<div class="table-data">Created</div>
 			</div>
+            <div class="table-row" ng-repeat="app in appArray">
+                <div class="table-data">{{app.name}}</div>
+                <div class="table-data status {{app.status.toLowerCase()}}">{{app.status}}</div>
+                <div class ="table-data">
+                    <button type="button" class="tableDataButtons button" ng-disabled="app.status==='Error'" ng-click="buttonStatusClick(app)">{{app.statusButtonText}}</button>
+                </div>
+                <div class="table-data">{{app.owner}}</div>
+                <div class="table-data">{{app.creationTime}}</div>
+            </div>
 		</div>
 	</div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="js/code.js"></script>
-    <script src="js/jquery.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script src="js/usingAngular.js"></script>
 </body>
 </html>

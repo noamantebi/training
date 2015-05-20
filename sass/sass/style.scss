@@ -30,6 +30,7 @@ $error: red;
 $buttonColor: #E8E8E8;
 $draft: grey;
 
+
 html, body {
 	height: 100%;
 }
@@ -42,17 +43,16 @@ body{
 	color: $dateColor;
 }
 
-#main-head{
-	color: blue;
-}
 
-.header{
-  	padding-left: 50px;
-  	padding-top: 30px;
-  	padding-bottom: 20px;
-  	float: left;
+//
+//.header{
+//  	padding-left: 50px;
+//  	padding-top: 30px;
+//  	padding-bottom: 20px;
+//  	float: left;
+//}
 
-}
+
 .button{
   font-size: smaller;
   background: $buttonColor;
@@ -61,27 +61,55 @@ body{
   outline: none;
 }
 
-#refresh{
-  float: left;
-  padding: 6px;
-  margin-left: 50px;
-  margin-top: 35px;
-  width: 100px;
+
+
+
+.header-row{
+  $height: 30px;
+  overflow: hidden;
+  margin: 30px 50px;
+  line-height: $height;
+
+  .main-head{
+    color: blue;
+    //line-height: 20px;
+  }
+
+  .header-data{
+    margin: 0px 50px;
+  }
+  .headers-left{
+    float: left;
+
+  }
+  .headers-right{
+    float: right;
+
+    .clear-filter{
+      width: 100px;
+      height: $height;
+    }
+    .filter {
+      border: 2px solid black;
+      border-radius: 5px;
+      width: 150px;
+      height: $height;
+      outline: none;
+      font-size: smaller;
+      padding: 0px 5px;
+    }
+  }
+
 }
 
-#sub-head{
-	float: right;
-	padding-right: 50px;
-}
-
-#main-div{
+.main-div{
 	border: 3px solid black;
 	position: absolute;
 	width: 100%;
 	//top: 50%;
 	//transform: translateY(-50%);
 }
-#table-container{
+.table-container{
 	padding: 40px;
 	background: #E8E8E8;
 	//height: 300px;
@@ -102,7 +130,7 @@ body{
           width: 12.5%;
           float: left;
           &.status {
-            width: 27.5%;
+            width: 40%;
           }
           &.running {
             color: $running;
