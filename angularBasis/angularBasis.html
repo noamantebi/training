@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Basic angular</title>
+    <link rel="stylesheet" type="text/css" href="sass/stylesheets/style.css">
+</head>
+<body ng-app="mainApp">
+    <div class="mainDiv" ng-controller="MyController">
+        <div class="title row">
+            <div class="data">App status:</div>
+            <div class="data">{{app.status}}</div>
+        </div>
+        <div class="hasController row" ng-controller="MyEmailController">
+            <div class="data">Email</div>
+            <div class="data">{{email}}</div>
+        </div>
+        <div class="hasController" ng-controller="MySaveController">
+            <div class="row">
+                <div class="data">Name</div>
+                <div class="data">{{app.name}}</div>
+            </div>
+            <div class="row">
+                <div class="data">Description</div>
+                <div class="data">{{app.description}}</div>
+            </div>
+            <button type="button" class="saveButton" ng-click="save()">Save</button>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script src="basicAngular.js"></script>
+</body>
+</html>

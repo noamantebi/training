@@ -8,7 +8,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -23,38 +23,49 @@ html {
   box-sizing: inherit;
 }
 
-
 html, body {
 	height: 100%;
 }
 
-body{
+body {
 	position:relative;
 }
-#mainDiv{
+.mainDiv {
   border: 2px solid black;
-  height: 200px;
-  width: 300px;
-  background: #E8E8E8;
+  height: 400px;
+  width: 500px;
+  background: white;
   margin: 15px auto 0;
-  text-align: center;
 
-
-  #saveButton{
-    clear:both;
-    background: none;
-    position:relative;
-    font-size: smaller;
-    border: 2px solid black;
-    border-radius: 5px;
-    outline: none;
-    margin-top: 15px;
+  .title {
+    font-weight: bold;
+    font-size: 20px;
   }
 
+  .hasController {
+    border: 2px solid dimgrey;
+    background: #F3F3F3;
+    margin: 10px 5px;
+
+    .saveButton{
+      clear: both;
+      background: none;
+      font-size: smaller;
+      border: 2px solid black;
+      border-radius: 5px;
+      outline: none;
+      margin: 15px auto;
+      width: 50px;
+      height: 35px;
+      display: block;
+    }
+  }
   .row{
     clear: both;
+    overflow: hidden;
     .data {
-      padding: 10px 25px;
+      width: 50%;
+      padding: 20px 25px;
       float: left;
     }
   }
