@@ -44,12 +44,40 @@ var createAppsArray = function(){
     return [app1,app2,app3,app4];
 }
 
+function pushAll(srcArray, targetArray) {
+    targetArray.length = 0;
+    _.forEach(srcArray, function(item) {
+        targetArray.push(item);
+    });
+}
+
 angular.module("mainApp", []);
 
 angular.module("mainApp").controller("MainController", function($scope){
-    $scope.appArray = createAppsArray();
+    //$scope.filterByName = {};
+    $scope.originAppArray = createAppsArray();
+    $scope.appArray = [];
+    pushAll($scope.originAppArray, $scope.appArray);
     $scope.buttonStatusClick = function(app){
         app.status = changeStatus(app.status);
         app.statusButtonText = getStatusButtonText(app.status);
     }
+});
+
+angular.module("mainApp").controller("myFilterController", function($scope){
+    //$scope.$watch('filterByName', function(newValue, oldValue){
+    //        if(newValue !== oldValue){
+    //            if (newValue === ""){
+    //                pushAll($scope.originAppArray, $scope.appArray);
+    //            } else {
+    //                var resultApp = _.filter($scope.appArray, function(app) {
+    //                    return app.name.indexOf(newValue) >= 0;
+    //                });
+    //                if (resultApp.length > 0) {
+    //                    pushAll(resultApp, $scope.appArray);
+    //                }
+    //            }
+    //        }
+    //    }
+    //)
 });
