@@ -6,14 +6,15 @@
 </head>
 <body ng-app="mainApp">
 	<div class="main-div" ng-controller="MainController">
-        <div class="header-row">
+        <div class="header-row" ng-controller="myHeaderController">
 		    <h1 class="headers-left main-head header-data">Applications</h1>
 		    <h3 class="headers-right header-data"> Showing 4 Ravello applications </h3>
             <div class="headers-right header-data filter-div">
-                <input type="text" name="filter" ng-model="filterByName.$"  class="filter" placeholder="Filter by name">
+                <!--<input type="text" name="filter" ng-model="filterByName.$"  class="filter" placeholder="Filter by name">-->
+                <input type="text" name="filter" ng-model="viewModel.filterByName"  class="filter" placeholder="Filter by name">
             </div>
             <div class="headers-right header-data">
-                <button type="button" class="clear-filter button" onclick="clearFilter()">Clear</button>
+                <button type="button" class="clear-filter button" ng-click="clearFilter()">Clear</button>
             </div>
         </div>
 		<div class="table-container">
@@ -24,11 +25,12 @@
 				<div class="table-data">Owner</div>
 				<div class="table-data">Created</div>
 			</div>
-            <div class="table-row" ng-repeat="app in appArray | filter:filterByName">
+            <!--<div class="table-row" ng-repeat="app in appArray | filter:filterByName">-->
+            <div class="table-row" ng-repeat="app in viewModel.appArray">
                 <div class="table-data">{{app.name}}</div>
-                <div class="table-data status {{app.status.toLowerCase()}}">{{app.status}}</div>
+                <div class="table-data status" ng-class="app.status.toLowerCase()">{{app.status}}</div>
                 <div class ="table-data">
-                    <button type="button" class="tableDataButtons button" ng-disabled="app.status==='Error'" ng-click="buttonStatusClick(app)">{{app.statusButtonText}}</button>
+                    <button type="button" class="tableDataButtons button" ng-disabled="app.status==='Error'" ng-click="updateStatus(app)">{{app.statusButtonText}}</button>
                 </div>
                 <div class="table-data">{{app.owner}}</div>
                 <div class="table-data">{{app.creationTime}}</div>

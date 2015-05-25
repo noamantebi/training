@@ -44,7 +44,7 @@ var createAppsArray = function(){
     return [app1,app2,app3,app4];
 }
 
-function pushAll(srcArray, targetArray) {
+function setAll(srcArray, targetArray) {
     targetArray.length = 0;
     _.forEach(srcArray, function(item) {
         targetArray.push(item);
@@ -54,30 +54,29 @@ function pushAll(srcArray, targetArray) {
 angular.module("mainApp", []);
 
 angular.module("mainApp").controller("MainController", function($scope){
-    //$scope.filterByName = {};
+
     $scope.originAppArray = createAppsArray();
-    $scope.appArray = [];
-    pushAll($scope.originAppArray, $scope.appArray);
-    $scope.buttonStatusClick = function(app){
+    $scope.viewModel = {
+        appArray: []
+    };
+    $scope.updateStatus = function(app){
         app.status = changeStatus(app.status);
         app.statusButtonText = getStatusButtonText(app.status);
     }
+
 });
 
-angular.module("mainApp").controller("myFilterController", function($scope){
-    //$scope.$watch('filterByName', function(newValue, oldValue){
-    //        if(newValue !== oldValue){
-    //            if (newValue === ""){
-    //                pushAll($scope.originAppArray, $scope.appArray);
-    //            } else {
-    //                var resultApp = _.filter($scope.appArray, function(app) {
-    //                    return app.name.indexOf(newValue) >= 0;
-    //                });
-    //                if (resultApp.length > 0) {
-    //                    pushAll(resultApp, $scope.appArray);
-    //                }
-    //            }
-    //        }
-    //    }
-    //)
+angular.module("mainApp").controller("myHeaderController", function($scope){
+    $scope.viewModel.filterByName = '';
+    $scope.$watch('viewModel.filterByName', function(){
+        $scope.viewModel.appArray = _.filter($scope.originAppArray, function(app) {
+            if ($scope.viewModel.filterByName === '') {
+                return true;
+            }
+            return app.name.indexOf($scope.viewModel.filterByName) >= 0;
+        });
+    });
+    $scope.clearFilter = function(){
+        $scope.viewModel.filterByName = '';
+    }
 });
