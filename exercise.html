@@ -5,37 +5,74 @@
 	<link rel="stylesheet" type="text/css" href="sass/stylesheets/style.css">
 </head>
 <body ng-app="mainApp">
-	<div class="main-div" ng-controller="MainController">
-        <div class="header-row" ng-controller="myHeaderController">
-		    <h1 class="headers-left main-head header-data">Applications</h1>
-		    <h3 class="headers-right header-data"> Showing 4 Ravello applications </h3>
-            <div class="headers-right header-data filter-div">
-                <!--<input type="text" name="filter" ng-model="filterByName.$"  class="filter" placeholder="Filter by name">-->
-                <input type="text" name="filter" ng-model="viewModel.filterByName"  class="filter" placeholder="Filter by name">
+	<div class="main-div" ng-controller="mainController">
+        <div class="applications-div" ng-controller="appsController">
+            <div class="header-row">
+                <h1 class="headers-left main-head header-data">Applications</h1>
+                <div class="headers-left header-data">
+                    <button type="button" class="refresh button" ng-click="refresh()">Refresh</button>
+                </div>
+                <h3 class="headers-right header-data"> Showing 4 Ravello applications </h3>
+                <div class="headers-right header-data filter-div">
+                    <!--<input type="text" name="filter" ng-model="filterByName.$"  class="filter" placeholder="Filter by name">-->
+                    <input type="text" name="filter" ng-model="viewModel.filterByName"  class="filter" placeholder="Filter by name">
+                </div>
             </div>
-            <div class="headers-right header-data">
-                <button type="button" class="clear-filter button" ng-click="clearFilter()">Clear</button>
+            <div class="table-container">
+                <div class="table-header title">
+                    <div class="table-data">Name</div>
+                    <div class="table-data status">Status</div>
+                    <div class ="table-data"></div>
+                    <div class ="table-data"></div>
+                    <div class ="table-data"></div>
+                    <div class="table-data">Owner</div>
+                    <div class="table-data">Created</div>
+                </div>
+                <!--<div class="table-row" ng-repeat="app in appArray | filter:filterByName">-->
+                <div class="app-body">
+                    <div class="table-row" ng-repeat="app in viewModel.appArray">
+                        <div class="table-data">{{app.name}}</div>
+                        <div class="table-data status" ng-class="app.status.toLowerCase()">{{app.status}}</div>
+                        <div class ="table-data">
+                            <button type="button" class="tableDataButtons button"  ng-click="rename(app.id, true)"( >Rename</button>
+                        </div>
+                        <div class="table-data">
+                            <a href="" ng-click="getInfo(app.id)">info</a>
+                        </div>
+                        <div class ="table-data">
+                            <button type="button" class="tableDataButtons button" ng-disabled="app.status==='Error' || app.status==='Draft'" ng-click="updateStatus(app)">{{app.statusButtonText}}</button>
+                        </div>
+                        <div class="table-data">{{app.owner}}</div>
+                        <div class="table-data">{{app.creationTime}}</div>
+                    </div>
+                </div>
             </div>
         </div>
-		<div class="table-container">
-			<div class="table-row title">
-				<div class="table-data">Name</div>
-				<div class="table-data status">Status</div>
-                <div class ="table-data"></div>
-				<div class="table-data">Owner</div>
-				<div class="table-data">Created</div>
-			</div>
-            <!--<div class="table-row" ng-repeat="app in appArray | filter:filterByName">-->
-            <div class="table-row" ng-repeat="app in viewModel.appArray">
-                <div class="table-data">{{app.name}}</div>
-                <div class="table-data status" ng-class="app.status.toLowerCase()">{{app.status}}</div>
-                <div class ="table-data">
-                    <button type="button" class="tableDataButtons button" ng-disabled="app.status==='Error'" ng-click="updateStatus(app)">{{app.statusButtonText}}</button>
+        <div class="app-info-div" ng-controller="infoController" ng-if="showInfo.value">
+            <div class="header-row">
+                <h1 class="headers-left header-data">{{appViewModel.name}}</h1>
+                <div class="headers-right header-data">
+                    <button type="button" name="rename" class="button" ng-click="rename(appViewModel.id, false)">Rename</button>
                 </div>
-                <div class="table-data">{{app.owner}}</div>
-                <div class="table-data">{{app.creationTime}}</div>
+                <div class="header-data headers-right app-description">{{appViewModel.description}}</div>
+                <h2 class="header-left sub-header" ng-class="appViewModel.status.toLowerCase() ">{{appViewModel.status}}</h2>
             </div>
-		</div>
+            <div class="app-info">
+                <h3 class="vm-header">VMs (Design)</h3>
+                <div class="vm-row title">
+                    <div class="vm-data vm-name">Name</div>
+                    <div class="vm-data vm-status">Status</div>
+                    <div class="vm-data vm-publish">PublishTime</div>
+                </div>
+                <div class="app-info-body">
+                    <div class="vm-row" ng-repeat="vm in appViewModel.vms">
+                        <div class="vm-data vm-name">{{vm.name}}</div>
+                        <div class="vm-data vm-status" ng-class="vm.status.toLowerCase()">{{vm.status}}</div>
+                        <div class="vm-data vm-publish">{{vm.publishTime}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
