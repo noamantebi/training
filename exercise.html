@@ -34,7 +34,7 @@
                         <div class="table-data">{{app.name}}</div>
                         <div class="table-data status" ng-class="app.status.toLowerCase()">{{app.status}}</div>
                         <div class ="table-data">
-                            <button type="button" class="tableDataButtons button"  ng-click="rename(app.id, true)"( >Rename</button>
+                            <button type="button" class="tableDataButtons button"  ng-click="renameApp(app)"( >Rename</button>
                         </div>
                         <div class="table-data">
                             <a href="" ng-click="getInfo(app.id)">info</a>
@@ -48,11 +48,11 @@
                 </div>
             </div>
         </div>
-        <div class="app-info-div" ng-controller="infoController" ng-if="showInfo.value">
+        <div class="app-info-div" ng-controller="infoController" ng-if="hasSelection()">
             <div class="header-row">
                 <h1 class="headers-left header-data">{{appViewModel.name}}</h1>
                 <div class="headers-right header-data">
-                    <button type="button" name="rename" class="button" ng-click="rename(appViewModel.id, false)">Rename</button>
+                    <button type="button" name="rename" class="button" ng-click="renameApp()">Rename</button>
                 </div>
                 <div class="header-data headers-right app-description">{{appViewModel.description}}</div>
                 <h2 class="header-left sub-header" ng-class="appViewModel.status.toLowerCase() ">{{appViewModel.status}}</h2>
@@ -76,6 +76,11 @@
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
-    <script src="js/usingAngular.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/mainController.js"></script>
+    <script src="js/dataFactory.js"></script>
+    <script src="js/appsController.js"></script>
+    <script src="js/infoController.js"></script>
+    <script src="js/helperFactory.js"></script>
 </body>
 </html>
